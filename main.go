@@ -16,10 +16,7 @@ var (
 func init() {
 
 	//read vars from env
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	godotenv.Load()
 	unixSocketPath = os.Getenv("UNIX_SOCKET_PATH")
 	tcpAddress = os.Getenv("TCP_BIND_ADDRESS")
 }
