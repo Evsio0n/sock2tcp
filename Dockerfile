@@ -20,5 +20,7 @@ RUN mkdir /app
 WORKDIR /app
 ENV UNIX_SOCKET_PATH=""
 ENV TCP_BIND_ADDRESS=""
-ENTRYPOINT ["/usr/local/bin/sock2tcp"]
+
+CMD ["/usr/local/bin/sock2tcp"]
+
 
