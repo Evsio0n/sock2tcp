@@ -1,4 +1,4 @@
-module sock2tcp
+module github.com/evsio0n/sock2tcp
 
 go 1.21
 
