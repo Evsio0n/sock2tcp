@@ -9,7 +9,7 @@ COPY . /app
 WORKDIR /app
 
 RUN go mod tidy
-RUN go build -o sock2tcp main.go
+RUN CGO_ENABLED=0 go build -o sock2tcp main.go
 RUN cp sock2tcp /tmp/sock2tcp
 
 FROM alpine:3.12 as runner
