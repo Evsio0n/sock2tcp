@@ -1,9 +1,13 @@
 FROM golang:1.21 as builder
+#Copy from outside to inside
+
 LABEL authors="evsio0n"
 
-RUN mkdir /tmp/workspace
-RUN cp -r . /tmp/workspace
-WORKDIR /tmp/workspace
+
+RUN mkdir /app
+COPY . /app
+WORKDIR /app
+
 RUN go mod tidy
 RUN go build -o sock2tcp main.go
 RUN cp sock2tcp /tmp/sock2tcp
