@@ -2,7 +2,7 @@ FROM golang:1.21 as builder
 LABEL authors="evsio0n"
 
 RUN mkdir /tmp/workspace
-RUN cp . /tmp/workspace
+RUN cp -r . /tmp/workspace
 WORKDIR /tmp/workspace
 RUN go mod tidy
 RUN go build -o sock2tcp main.go
