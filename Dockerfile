@@ -12,9 +12,11 @@ RUN go mod tidy
 RUN go build -o sock2tcp main.go
 RUN cp sock2tcp /tmp/sock2tcp
 
-FROM alpine:3.12
+FROM alpine:3.12 as runner
 COPY --from=builder /tmp/sock2tcp /usr/local/bin/sock2tcp
-
+RUN ls -la /usr/local/bin/sock2tcp
+RUN mkdir /app
+WORKDIR /app
 ENV UNIX_SOCKET_PATH=""
 ENV TCP_BIND_ADDRESS=""
 ENTRYPOINT ["/usr/local/bin/sock2tcp"]
